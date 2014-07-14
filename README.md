@@ -15,7 +15,7 @@ VirtualCoin is a lite version of Bitcoin using X11 as a proof-of-work algorithm.
  - GPU/CPU only mining
  - Block generation: 2.5 minutes
  - Difficulty Retargets every block using Virtual Gravity Wave
- - Est. ~7M Coins in 2015, ~13M in 2020, ~23M in 2030
+ - Est. ~1M Coins in 2015, ~3M in 2020
  - Anonymous blockchain using VirtualSend technology (Based on CoinJoin): Beta Testing
 
 For more information, as well as an immediately useable, binary version of
