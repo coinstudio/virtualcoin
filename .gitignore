@@ -7,7 +7,6 @@ src/test_virtualcoin
 *.bak
 *.rej
 *.orig
-*.o
 *.patch
 .virtualcoin
 
