@@ -21,7 +21,7 @@ VirtualCoin is a lite version of Bitcoin using X11 as a proof-of-work algorithm.
 For more information, as well as an immediately useable, binary version of
 the VirtualCoin client sofware, see http://www.vcoin.ca.
 
-License
+License:
 -------
 
 VirtualCoin is released under the terms of the MIT license. See `COPYING` for more
