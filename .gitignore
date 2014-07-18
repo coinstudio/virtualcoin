@@ -5,6 +5,7 @@ src/test_virtualcoin
 .*.swp
 *.*~*
 *.bak
+*.o
 *.rej
 *.orig
 *.patch
