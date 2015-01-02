@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2013 PPCoin developers
-// Copyright (c) 2013 Primecoin developers
+// Copyright (c) 2013 Virtualcoin developers
 // Distributed under conditional MIT/X11 software license,
 // see the accompanying file COPYING
 //
