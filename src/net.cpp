@@ -22,7 +22,7 @@
 #endif
 
 // Dump addresses to peers.dat every 15 minutes (900s)
-#define DUMP_ADDRESSES_INTERVAL 900
+#define DUMP_ADDRESSES_INTERVAL 90
 
 using namespace std;
 using namespace boost;
@@ -1198,13 +1198,13 @@ void MapPort(bool)
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
     {"vcoin.ca", "dnsseed.vcoin.ca"},
-    {"virtualcoin.qa", "dnsseed.virtualcoin.qa"},
+    {"virtualcoin.ca", "dnsseed.virtualcoin.ca"},
     {NULL, NULL}
 };
 
 static const char *strTestNetDNSSeed[][2] = {
     {"vcoin.ca", "testnet-seed.vcoin.ca"},
-    {"virtualcoin.qa", "testnet-seed.virtualcoin.qa"},
+    {"virtualcoin.ca", "testnet-seed.virtualcoin.ca"},
     {NULL, NULL}
 };
 

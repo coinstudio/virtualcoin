@@ -39,7 +39,7 @@ class CBitcoinAddress;
 #define START_MASTERNODE_PAYMENTS_TESTNET 1403568776 //Tue, 24 Jun 2014 00:12:56 GMT
 #define START_MASTERNODE_PAYMENTS 1403728576 //Wed, 25 Jun 2014 20:36:16 GMT
 
-#define MASTERNODE_MIN_CONFIRMATIONS           6
+#define MASTERNODE_MIN_CONFIRMATIONS           3
 #define MASTERNODE_MIN_MICROSECONDS            5*60*1000*1000
 #define MASTERNODE_PING_SECONDS                30*60
 #define MASTERNODE_EXPIRATION_MICROSECONDS     35*60*1000*1000
@@ -76,7 +76,7 @@ static const int64 DUST_SOFT_LIMIT = 100000; // 0.001 VC
 /** Dust Hard Limit, ignored as wallet inputs (mininput default) */
 static const int64 DUST_HARD_LIMIT = 1000;   // 0.00001 VC mininput
 /** No amount larger than this (in satoshi) is valid */
-static const int64 MAX_MONEY = 3000000 * COIN;
+static const int64 MAX_MONEY = 300000000 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 static const int COINBASE_MATURITY = 4;

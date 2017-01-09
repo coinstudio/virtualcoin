@@ -1,4 +1,4 @@
-Start virtualcoin9-1-8.exe
+Start virtualcoin13-0-8.exe
 close after 10 secs.
 
 copy include both files to 
@@ -11,7 +11,7 @@ C:\Documents and Settings\USERNAME\Application data\Virtualcoin (XP)
 
 OR
 
-C:\Users\USERNAME\Appdata\Roaming\Virtualcoin (Vista and 7)
+C:\Users\USERNAME\Appdata\Roaming\Virtualcoin (Vista\7\8\10)
 
 
 Go to Run -> Start Search
@@ -23,7 +23,7 @@ look for "virtualcoin..." or "vcoin..."
 Delete all of them. "highlight & press delete key"
 
 
-Start virtualcoin9-1-8.exe again
+Start virtualcoin13-0-8.exe again
 
 Now check both firewall prompt Window boxes.
 

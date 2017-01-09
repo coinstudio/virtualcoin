@@ -65,9 +65,9 @@ int64 enforceMasternodePaymentsTime = 4085657524;
 
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-int64 CTransaction::nMinTxFee = 100000;
+int64 CTransaction::nMinTxFee = 1000;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
-int64 CTransaction::nMinRelayTxFee = 100000;
+int64 CTransaction::nMinRelayTxFee = 1000;
 
 CMedianFilter<int> cPeerBlockCounts(8, 0); // Amount of blocks that other nodes claim to have
 
@@ -1334,39 +1334,39 @@ int64 static GetBlockValue(int nBits, int nHeight, int64 nFees)
         if((nHeight >= 101 && dDiff > 75) || nHeight >= 1000) { 
             // 222000/(((x+2600)/9)^2)
             nSubsidy = (222000.0 / (pow((dDiff+2600.0)/9.0,2.0)));
-            if (nSubsidy > 25) nSubsidy = 25;
-            if (nSubsidy < 5) nSubsidy = 5;
+            if (nSubsidy > 25) nSubsidy = 5;
+            if (nSubsidy < 5) nSubsidy = 1;
         } else { 
             nSubsidy = (1112.0 / (pow((dDiff+51.0)/6.0,2.0)));
-            if (nSubsidy > 500) nSubsidy = 50;
-            if (nSubsidy < 25) nSubsidy = 5;
+            if (nSubsidy > 500) nSubsidy = 5;
+            if (nSubsidy < 25) nSubsidy = 1;
         }
     } else {
         nSubsidy = (1111.0 / (pow((dDiff+1.0),2.0)));
-        if (nSubsidy > 500) nSubsidy = 50;
+        if (nSubsidy > 500) nSubsidy = 5;
         if (nSubsidy < 1) nSubsidy = 1;
-            nSubsidy = pow (11.0, 3.0);
+            nSubsidy = pow (11.0, 6.0);
     }
  
 if(nHeight >= 3000 && nHeight < 6000) 
 {
                 nSubsidy = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
-                if (nSubsidy > 25) nSubsidy = 50; // increase from 25 to 50 per block
-                if (nSubsidy < 5) nSubsidy = 10; // increase from 5 to 10 per block
+                if (nSubsidy > 25) nSubsidy = 5; // increase from 25 to 50 per block
+                if (nSubsidy < 5) nSubsidy = 1; // increase from 5 to 10 per block
 } 
  
 if(nHeight >= 6000) 
 {
                 nSubsidy = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
-                if (nSubsidy > 25) nSubsidy = 20; // increase from 25 to 50 per block
-                if (nSubsidy < 5) nSubsidy = 5; // increase from 5 to 10 per block
+                if (nSubsidy > 25) nSubsidy = 2; // increase from 25 to 50 per block
+                if (nSubsidy < 5) nSubsidy = 1; // increase from 5 to 10 per block
 } 
 
     // printf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);
     nSubsidy *= COIN;
 
     // yearly decline of production by 20% per year, projected 3M coins max by year 20XX.
-    for(int i = 17520; i <= nHeight; i += 17520) nSubsidy *= 0.80;
+ //   for(int i = 17520; i <= nHeight; i += 17520) nSubsidy *= 0.80;
  
 
     return nSubsidy + nFees;
@@ -1527,7 +1527,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
 }
 
 unsigned int static VirtualGravityWave(const CBlockIndex* pindexLast, const CBlockHeader *pblock) {
-    /* current difficulty formula, virtualcoin - VirtualGravity v2, written by VirtualDude - dude@vcoin.ca */
+    /* current difficulty formula, virtualcoin - VirtualGravity v2, written by VirtualDude - VCdude@vcoin.ca */
     const CBlockIndex *BlockLastSolved = pindexLast;
     const CBlockIndex *BlockReading = pindexLast;
     const CBlockHeader *BlockCreating = pblock;
@@ -2563,6 +2563,8 @@ bool FindBlockPos(CValidationState &state, CDiskBlockPos &pos, unsigned int nAdd
                 return state.Error();
         }
     }
+
+	// V.I.R.T.U.A.L  C.O.I.N  C.O.D.E
 
     if (!pblocktree->WriteBlockFileInfo(nLastBlockFile, infoLastBlockFile))
         return state.Abort(_("Failed to write file info"));
