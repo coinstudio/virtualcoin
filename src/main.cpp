@@ -1336,6 +1336,7 @@ int64 static GetBlockValue(int nBits, int VcoinHT, int64 nFees)
         if((VcoinHT >= 101 && dDiff > 75) || VcoinHT >= 1000) { 
  
             // 222000/(((x+2600)/9)^2)
+<<<<<<< HEAD
 //            VcoinRD = (222000.0 / (pow((dDiff+2600.0)/9.0,2.0)));
 			VcoinRD = dDiff * .4356;
             if (VcoinRD == 25) VcoinRD = (1 + 250.00) - (VcoinHT / 4);
@@ -1354,22 +1355,49 @@ int64 static GetBlockValue(int nBits, int VcoinHT, int64 nFees)
 //        if (VcoinRD > 500) VcoinRD = 250.00 - (VcoinHT / 4);
 //        if (VcoinRD < 1) VcoinRD = 250.00 - (VcoinHT / 4);
 //            VcoinRD = 1;
+=======
+            nSubsidy = (222000.0 / (pow((dDiff+2600.0)/9.0,2.0)));
+            if (nSubsidy > 25) nSubsidy = 5;
+            if (nSubsidy < 5) nSubsidy = 1;
+        } else { 
+            nSubsidy = (1112.0 / (pow((dDiff+51.0)/6.0,2.0)));
+            if (nSubsidy > 500) nSubsidy = 5;
+            if (nSubsidy < 25) nSubsidy = 1;
+        }
+    } else {
+        nSubsidy = (1111.0 / (pow((dDiff+1.0),2.0)));
+        if (nSubsidy > 500) nSubsidy = 5;
+        if (nSubsidy < 1) nSubsidy = 1;
+            nSubsidy = pow (11.0, 6.0);
+>>>>>>> origin/9.2.0
     }
  
 if(VcoinHT >= 1000 && VcoinHT < 6000) 
 {
+<<<<<<< HEAD
 			VcoinRD = dDiff * .4726;
 //                VcoinRD = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
 //                if (VcoinRD > 25) VcoinRD = 5; // increase from 25 to 50 per block
 //                if (VcoinRD < 5) VcoinRD = 1; // increase from 5 to 10 per block
+=======
+                nSubsidy = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
+                if (nSubsidy > 25) nSubsidy = 5; // increase from 25 to 50 per block
+                if (nSubsidy < 5) nSubsidy = 1; // increase from 5 to 10 per block
+>>>>>>> origin/9.2.0
 } 
  
 if(VcoinHT >= 6000) 
 {
+<<<<<<< HEAD
                 VcoinRD = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
                 if (VcoinRD > 25) VcoinRD = dDiff * .4356; // increase from 25 to 50 per block
                 if (VcoinRD < 5) VcoinRD = 1; // increase from 5 to 10 per block
 
+=======
+                nSubsidy = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
+                if (nSubsidy > 25) nSubsidy = 2; // increase from 25 to 50 per block
+                if (nSubsidy < 5) nSubsidy = 1; // increase from 5 to 10 per block
+>>>>>>> origin/9.2.0
 } 
 
 // printf("\n \n height %u diff %4.2f reward %i \n \n", Vcoin.HT, dDiff, Vcoin.RD);
@@ -1379,7 +1407,11 @@ if(VcoinHT >= 6000)
  VcoinRD *= COIN;
 
     // yearly decline of production by 20% per year, projected 3M coins max by year 20XX.
+<<<<<<< HEAD
  //   for(int i = 17520; i <= Vcoin.HT; i += 17520) Vcoin.RD *= 0.80;
+=======
+ //   for(int i = 17520; i <= nHeight; i += 17520) nSubsidy *= 0.80;
+>>>>>>> origin/9.2.0
  
 
     return VcoinRD + nFees;

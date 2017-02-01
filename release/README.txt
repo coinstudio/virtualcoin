@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Start virtualcoin-qt.exe
+=======
+Start virtualcoin13-0-8.exe
+>>>>>>> origin/9.2.0
 close after 10 secs.
 
 copy include both files to 
@@ -23,7 +27,11 @@ look for "virtualcoin..." or "vcoin..."
 Delete all of them. "highlight & press delete key"
 
 
+<<<<<<< HEAD
 Start virtualcoin-qt.exe again
+=======
+Start virtualcoin13-0-8.exe again
+>>>>>>> origin/9.2.0
 
 Now check both firewall prompt Window boxes.
 
