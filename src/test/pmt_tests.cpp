@@ -39,10 +39,10 @@ BOOST_AUTO_TEST_CASE(pmt_test1)
         std::vector<uint256> vTxid(nTx, 0);
         for (unsigned int j=0; j<nTx; j++)
             vTxid[j] = block.vtx[j].GetHash();
-        int nHeight = 1, nTx_ = nTx;
+        int VcoinHT = 1, nTx_ = nTx;
         while (nTx_ > 1) {
             nTx_ = (nTx_+1)/2;
-            nHeight++;
+            VcoinHT++;
         }
 
         // check with random subsets with inclusion chances 1, 1/2, 1/4, ..., 1/128
@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE(pmt_test1)
             ss << pmt1;
 
             // verify CPartialMerkleTree's size guarantees
-            unsigned int n = std::min<unsigned int>(nTx, 1 + vMatchTxid1.size()*nHeight);
+            unsigned int n = std::min<unsigned int>(nTx, 1 + vMatchTxid1.size()*VcoinHT);
             BOOST_CHECK(ss.size() <= 10 + (258*n+7)/8);
 
             // deserialize into a tester copy

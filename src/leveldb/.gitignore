@@ -1,8 +1,8 @@
 build_config.mk
 *.a
+*.o
 *.dylib*
 *.so
-*.o
 *.so.*
 *_test
 db_bench

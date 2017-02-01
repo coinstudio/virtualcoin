@@ -67,7 +67,7 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)
         pblock->nTime = pindexBest->GetMedianTimePast()+1;
         pblock->vtx[0].vin[0].scriptSig = CScript();
         pblock->vtx[0].vin[0].scriptSig.push_back(blockinfo[i].extranonce);
-        pblock->vtx[0].vin[0].scriptSig.push_back(pindexBest->nHeight);
+        pblock->vtx[0].vin[0].scriptSig.push_back(pindexBest->VcoinHT);
         pblock->vtx[0].vout[0].scriptPubKey = CScript();
         if (txFirst.size() < 2)
             txFirst.push_back(new CTransaction(pblock->vtx[0]));
@@ -191,14 +191,14 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)
     mempool.clear();
 
     // subsidy changing
-    int nHeight = pindexBest->nHeight;
-    pindexBest->nHeight = 209999;
+    int VcoinHT = pindexBest->VcoinHT;
+    pindexBest->VcoinHT = 209999;
     BOOST_CHECK(pblocktemplate = CreateNewBlockWithKey(reservekey));
     delete pblocktemplate;
-    pindexBest->nHeight = 210000;
+    pindexBest->VcoinHT = 210000;
     BOOST_CHECK(pblocktemplate = CreateNewBlockWithKey(reservekey));
     delete pblocktemplate;
-    pindexBest->nHeight = nHeight;
+    pindexBest->VcoinHT = VcoinHT;
 }
 
 BOOST_AUTO_TEST_CASE(sha256transform_equality)

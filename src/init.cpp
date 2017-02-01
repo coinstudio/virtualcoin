@@ -1088,7 +1088,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         if (pindexBest && pindexBest != pindexRescan)
         {
             uiInterface.InitMessage(_("Rescanning..."));
-            printf("Rescanning last %i blocks (from block %i)...\n", pindexBest->nHeight - pindexRescan->nHeight, pindexRescan->nHeight);
+            printf("Rescanning last %i blocks (from block %i)...\n", pindexBest->VcoinHT - pindexRescan->VcoinHT, pindexRescan->VcoinHT);
             nStart = GetTimeMillis();
             pwalletMain->ScanForWalletTransactions(pindexRescan, true);
             printf(" rescan      %15"PRI64d"ms\n", GetTimeMillis() - nStart);

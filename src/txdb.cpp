@@ -136,7 +136,7 @@ bool CCoinsViewDB::GetStats(CCoinsStats &stats) {
                 ss << txhash;
                 ss << VARINT(coins.nVersion);
                 ss << (coins.fCoinBase ? 'c' : 'n'); 
-                ss << VARINT(coins.nHeight);
+                ss << VARINT(coins.VcoinHT);
                 stats.nTransactions++;
                 for (unsigned int i=0; i<coins.vout.size(); i++) {
                     const CTxOut &out = coins.vout[i];
@@ -156,7 +156,7 @@ bool CCoinsViewDB::GetStats(CCoinsStats &stats) {
         }
     }
     delete pcursor;
-    stats.nHeight = GetBestBlock()->nHeight;
+    stats.VcoinHT = GetBestBlock()->VcoinHT;
     stats.hashSerialized = ss.GetHash();
     stats.nTotalAmount = nTotalAmount;
     return true;
@@ -210,7 +210,7 @@ bool CBlockTreeDB::LoadBlockIndexGuts()
                 // Construct block index object
                 CBlockIndex* pindexNew = InsertBlockIndex(diskindex.GetBlockHash());
                 pindexNew->pprev          = InsertBlockIndex(diskindex.hashPrev);
-                pindexNew->nHeight        = diskindex.nHeight;
+                pindexNew->VcoinHT        = diskindex.VcoinHT;
                 pindexNew->nFile          = diskindex.nFile;
                 pindexNew->nDataPos       = diskindex.nDataPos;
                 pindexNew->nUndoPos       = diskindex.nUndoPos;

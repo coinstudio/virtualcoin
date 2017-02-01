@@ -22,12 +22,12 @@
 #endif
 
 // Dump addresses to peers.dat every 15 minutes (900s)
-#define DUMP_ADDRESSES_INTERVAL 900
+#define DUMP_ADDRESSES_INTERVAL 90
 
 using namespace std;
 using namespace boost;
 
-static const int MAX_OUTBOUND_CONNECTIONS = 8;
+static const int MAX_OUTBOUND_CONNECTIONS = 99;
 
 bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOutbound = NULL, const char *strDest = NULL, bool fOneShot = false);
 
@@ -1198,13 +1198,13 @@ void MapPort(bool)
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
     {"vcoin.ca", "dnsseed.vcoin.ca"},
-    {"virtualcoin.qa", "dnsseed.virtualcoin.qa"},
+    {"virtualcoin.ca", "dnsseed.virtualcoin.ca"},
     {NULL, NULL}
 };
 
 static const char *strTestNetDNSSeed[][2] = {
     {"vcoin.ca", "testnet-seed.vcoin.ca"},
-    {"virtualcoin.qa", "testnet-seed.virtualcoin.qa"},
+    {"virtualcoin.ca", "testnet-seed.virtualcoin.ca"},
     {NULL, NULL}
 };
 
@@ -1689,9 +1689,9 @@ bool BindListenPort(const CService &addrBind, string& strError)
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to %s on this computer. VirtualCoin is probably already running."), addrBind.ToString().c_str());
+            strError = strprintf(_("Unable to bind to %s on this computer. VirtualCoin is probably already running. Please close any SSL webserver running on this PC or visit VirtualCoin.ca for help."), addrBind.ToString().c_str());
         else
-            strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %d, %s)"), addrBind.ToString().c_str(), nErr, strerror(nErr));
+            strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %d, %s) Please close any SSL webserver running on this PC or visit VirtualCoin.ca for help."), addrBind.ToString().c_str(), nErr, strerror(nErr));
         printf("%s\n", strError.c_str());
         return false;
     }

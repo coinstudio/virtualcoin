@@ -609,7 +609,7 @@ private:
     // make this static for now (there are only 6 special scripts defined)
     // this can potentially be extended together with a new nVersion for
     // transactions, in which case this value becomes dependent on nVersion
-    // and nHeight of the enclosing transaction.
+    // and VcoinHT of the enclosing transaction.
     static const unsigned int nSpecialScripts = 6;
 
     CScript &script;

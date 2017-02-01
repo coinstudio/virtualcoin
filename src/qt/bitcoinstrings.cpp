@@ -60,10 +60,10 @@ QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Set the number of script verification threads (up to 16, 0 = auto, <0 = "
 "leave that many cores free, default: 0)"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
-"This is a pre-release test build - use at your own risk - do not use for "
+"This tool has been validated & tested to be used as a currency or online transaction & future ATM support."
 "mining or merchant applications"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
-"Unable to bind to %s on this computer. VirtualCoin is probably already running."),
+"Unable to bind to %s on this computer. VirtualCoin is probably already running. It is also possible you may have a webserver running on the PC on port %s [SSL]. Close all other applications before running again or else rerun with -port=12803 option"),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "Warning: -paytxfee is set very high! This is the transaction fee you will "
 "pay if you send a transaction."),
