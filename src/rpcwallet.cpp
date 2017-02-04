@@ -1188,7 +1188,7 @@ Value listsinceblock(const Array& params, bool fHelp)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid parameter");
     }
 
-    int depth = pindex ? (1 + nBestHeight - pindex->VcoinHT) : -1;
+    int depth = pindex ? (1 + nBestHeight - pindex->Vcoinh) : -1;
 
     Array transactions;
 
@@ -1208,11 +1208,11 @@ Value listsinceblock(const Array& params, bool fHelp)
     }
     else
     {
-        int target_height = pindexBest->VcoinHT + 1 - target_confirms;
+        int target_height = pindexBest->Vcoinh + 1 - target_confirms;
 
         CBlockIndex *block;
         for (block = pindexBest;
-             block && block->VcoinHT > target_height;
+             block && block->Vcoinh > target_height;
              block = block->pprev)  { }
 
         lastblock = block ? block->GetBlockHash() : 0;

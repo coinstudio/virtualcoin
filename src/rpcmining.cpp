@@ -20,16 +20,16 @@ Value GetNetworkHashPS(int lookup, int height) {
     if (height >= 0 && height < nBestHeight)
         pb = FindBlockByHeight(height);
 
-    if (pb == NULL || !pb->VcoinHT)
+    if (pb == NULL || !pb->Vcoinh)
         return 0;
 
     // If lookup is -1, then use blocks since last difficulty change.
     if (lookup <= 0)
-        lookup = pb->VcoinHT % 2016 + 1;
+        lookup = pb->Vcoinh % 2016 + 1;
 
     // If lookup is larger than chain, then set it to chain length.
-    if (lookup > pb->VcoinHT)
-        lookup = pb->VcoinHT;
+    if (lookup > pb->Vcoinh)
+        lookup = pb->Vcoinh;
 
     CBlockIndex *pb0 = pb;
     int64 minTime = pb0->GetBlockTime();
@@ -565,7 +565,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
     result.push_back(Pair("sizelimit", (int64_t)MAX_BLOCK_SIZE));
     result.push_back(Pair("curtime", (int64_t)pblock->nTime));
     result.push_back(Pair("bits", HexBits(pblock->nBits)));
-    result.push_back(Pair("height", (int64_t)(pindexPrev->VcoinHT+1)));
+    result.push_back(Pair("height", (int64_t)(pindexPrev->Vcoinh+1)));
     result.push_back(Pair("votes", aVotes));
 
 

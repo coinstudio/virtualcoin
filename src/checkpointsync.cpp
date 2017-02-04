@@ -113,13 +113,13 @@ bool ValidateSyncCheckpoint(uint256 hashCheckpoint)
     CBlockIndex* pindexSyncCheckpoint = mapBlockIndex[hashSyncCheckpoint];
     CBlockIndex* pindexCheckpointRecv = mapBlockIndex[hashCheckpoint];
 
-    if (pindexCheckpointRecv->VcoinHT <= pindexSyncCheckpoint->VcoinHT)
+    if (pindexCheckpointRecv->Vcoinh <= pindexSyncCheckpoint->Vcoinh)
     {
         // Received an older checkpoint, trace back from current checkpoint
         // to the same height of the received checkpoint to verify
         // that current checkpoint should be a descendant block
         CBlockIndex* pindex = pindexSyncCheckpoint;
-        while (pindex->VcoinHT > pindexCheckpointRecv->VcoinHT)
+        while (pindex->Vcoinh > pindexCheckpointRecv->Vcoinh)
             if (!(pindex = pindex->pprev))
                 return error("ValidateSyncCheckpoint: pprev1 null - block index structure failure");
         if (pindex->GetBlockHash() != hashCheckpoint)
@@ -134,7 +134,7 @@ bool ValidateSyncCheckpoint(uint256 hashCheckpoint)
     // checkpoint. Trace back to the same height of current checkpoint
     // to verify.
     CBlockIndex* pindex = pindexCheckpointRecv;
-    while (pindex->VcoinHT > pindexSyncCheckpoint->VcoinHT)
+    while (pindex->Vcoinh > pindexSyncCheckpoint->Vcoinh)
         if (!(pindex = pindex->pprev))
             return error("ValidateSyncCheckpoint: pprev2 null - block index structure failure");
     if (pindex->GetBlockHash() != hashSyncCheckpoint)
@@ -208,7 +208,7 @@ uint256 AutoSelectSyncCheckpoint()
 {
     // Search backward for a block with specified depth policy
     const CBlockIndex *pindex = pindexBest;
-    while (pindex->pprev && pindex->VcoinHT + (int)GetArg("-checkpointdepth", -1) > pindexBest->VcoinHT)
+    while (pindex->pprev && pindex->Vcoinh + (int)GetArg("-checkpointdepth", -1) > pindexBest->Vcoinh)
         pindex = pindex->pprev;
     return pindex->GetBlockHash();
 }
@@ -216,25 +216,25 @@ uint256 AutoSelectSyncCheckpoint()
 // Check against synchronized checkpoint
 bool CheckSyncCheckpoint(const uint256& hashBlock, const CBlockIndex* pindexPrev)
 {
-    int VcoinHT = pindexPrev->VcoinHT + 1;
+    int Vcoinh = pindexPrev->Vcoinh + 1;
     LOCK(cs_hashSyncCheckpoint);
     // sync-checkpoint should always be accepted block
     assert(mapBlockIndex.count(hashSyncCheckpoint));
     const CBlockIndex* pindexSync = mapBlockIndex[hashSyncCheckpoint];
 
-    if (VcoinHT > pindexSync->VcoinHT)
+    if (Vcoinh > pindexSync->Vcoinh)
     {
         // trace back to same height as sync-checkpoint
         const CBlockIndex* pindex = pindexPrev;
-        while (pindex->VcoinHT > pindexSync->VcoinHT)
+        while (pindex->Vcoinh > pindexSync->Vcoinh)
             if (!(pindex = pindex->pprev))
                 return error("CheckSyncCheckpoint: pprev null - block index structure failure");
-        if (pindex->VcoinHT < pindexSync->VcoinHT || pindex->GetBlockHash() != hashSyncCheckpoint)
+        if (pindex->Vcoinh < pindexSync->Vcoinh || pindex->GetBlockHash() != hashSyncCheckpoint)
             return false; // only descendant of sync-checkpoint can pass check
     }
-    if (VcoinHT == pindexSync->VcoinHT && hashBlock != hashSyncCheckpoint)
+    if (Vcoinh == pindexSync->Vcoinh && hashBlock != hashSyncCheckpoint)
         return false; // same height with sync-checkpoint
-    if (VcoinHT < pindexSync->VcoinHT && !mapBlockIndex.count(hashBlock))
+    if (Vcoinh < pindexSync->Vcoinh && !mapBlockIndex.count(hashBlock))
         return false; // lower height than sync-checkpoint
     return true;
 }
@@ -366,7 +366,7 @@ bool IsMatureSyncCheckpoint()
     // sync-checkpoint should always be accepted block
     assert(mapBlockIndex.count(hashSyncCheckpoint));
     const CBlockIndex* pindexSync = mapBlockIndex[hashSyncCheckpoint];
-    return (nBestHeight >= pindexSync->VcoinHT + COINBASE_MATURITY);
+    return (nBestHeight >= pindexSync->Vcoinh + COINBASE_MATURITY);
 }
 
 // Is the sync-checkpoint too old?
@@ -467,7 +467,7 @@ Value getcheckpoint(const Array& params, bool fHelp)
     if (mapBlockIndex.count(hashSyncCheckpoint))
     {
         pindexCheckpoint = mapBlockIndex[hashSyncCheckpoint];
-        result.push_back(Pair("height", pindexCheckpoint->VcoinHT));
+        result.push_back(Pair("height", pindexCheckpoint->Vcoinh));
         result.push_back(Pair("timestamp", (boost::int64_t) pindexCheckpoint->GetBlockTime()));
     }
     result.push_back(Pair("subscribemode", IsSyncCheckpointEnforced()? "enforce" : "advisory"));
@@ -500,7 +500,7 @@ Value sendcheckpoint(const Array& params, bool fHelp)
     if (mapBlockIndex.count(hashSyncCheckpoint))
     {
         pindexCheckpoint = mapBlockIndex[hashSyncCheckpoint];
-        result.push_back(Pair("height", pindexCheckpoint->VcoinHT));
+        result.push_back(Pair("height", pindexCheckpoint->Vcoinh));
         result.push_back(Pair("timestamp", (boost::int64_t) pindexCheckpoint->GetBlockTime()));
     }
     result.push_back(Pair("subscribemode", IsSyncCheckpointEnforced()? "enforce" : "advisory"));

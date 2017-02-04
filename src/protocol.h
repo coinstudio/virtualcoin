@@ -18,11 +18,7 @@
 extern bool fTestNet;
 static inline unsigned short GetDefaultPort(const bool testnet = fTestNet)
 {
-<<<<<<< HEAD
     return testnet ? 80 : 443;
-=======
-    return testnet ? 443 : 80;
->>>>>>> origin/9.2.0
 }
 
 

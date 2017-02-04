@@ -76,11 +76,7 @@ static const int64 DUST_SOFT_LIMIT = 100000; // 0.001 VC
 /** Dust Hard Limit, ignored as wallet inputs (mininput default) */
 static const int64 DUST_HARD_LIMIT = 1000;   // 0.00001 VC mininput
 /** No amount larger than this (in satoshi) is valid */
-<<<<<<< HEAD
 static const int64 MAX_MONEY = 400000000 * COIN;
-=======
-static const int64 MAX_MONEY = 300000000 * COIN;
->>>>>>> origin/9.2.0
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 static const int COINBASE_MATURITY = 2000;
@@ -185,7 +181,7 @@ bool VerifyDB(int nCheckLevel, int nCheckDepth);
 /** Print the loaded block tree */
 void PrintBlockTree();
 /** Find a block by height in the currently-connected chain */
-CBlockIndex* FindBlockByHeight(int VcoinHT);
+CBlockIndex* FindBlockByHeight(int Vcoinh);
 /** Process protocol messages received from a given node */
 bool ProcessMessages(CNode* pfrom);
 /** Send queued protocol messages to be sent to a give node */
@@ -663,7 +659,7 @@ public:
     }
 
 // Apply the effects of this transaction on the UTXO set represented by view
-void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCache &inputs, CTxUndo &txundo, int VcoinHT, const uint256 &txhash);
+void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCache &inputs, CTxUndo &txundo, int Vcoinh, const uint256 &txhash);
 
     int64 GetMinFee(unsigned int nBlockSize=1, bool fAllowFree=true, enum GetMinFee_mode mode=GMF_BLOCK) const;
 
@@ -714,7 +710,7 @@ void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCach
                      std::vector<CScriptCheck> *pvChecks = NULL) const;
 
     // Apply the effects of this transaction on the UTXO set represented by view
-    void UpdateCoins(CValidationState &state, CCoinsViewCache &view, CTxUndo &txundo, int VcoinHT, const uint256 &txhash) const;
+    void UpdateCoins(CValidationState &state, CCoinsViewCache &view, CTxUndo &txundo, int Vcoinh, const uint256 &txhash) const;
 
     // Context-independent validity checks
     bool CheckTransaction(CValidationState &state) const;
@@ -769,22 +765,22 @@ class CTxInUndo
 public:
     CTxOut txout;         // the txout data before being spent
     bool fCoinBase;       // if the outpoint was the last unspent: whether it belonged to a coinbase
-    unsigned int VcoinHT; // if the outpoint was the last unspent: its height
+    unsigned int Vcoinh; // if the outpoint was the last unspent: its height
     int nVersion;         // if the outpoint was the last unspent: its version
 
-    CTxInUndo() : txout(), fCoinBase(false), VcoinHT(0), nVersion(0) {}
-    CTxInUndo(const CTxOut &txoutIn, bool fCoinBaseIn = false, unsigned int VcoinHTIn = 0, int nVersionIn = 0) : txout(txoutIn), fCoinBase(fCoinBaseIn), VcoinHT(VcoinHTIn), nVersion(nVersionIn) { }
+    CTxInUndo() : txout(), fCoinBase(false), Vcoinh(0), nVersion(0) {}
+    CTxInUndo(const CTxOut &txoutIn, bool fCoinBaseIn = false, unsigned int VcoinhIn = 0, int nVersionIn = 0) : txout(txoutIn), fCoinBase(fCoinBaseIn), Vcoinh(VcoinhIn), nVersion(nVersionIn) { }
 
     unsigned int GetSerializeSize(int nType, int nVersion) const {
-        return ::GetSerializeSize(VARINT(VcoinHT*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
-               (VcoinHT > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
+        return ::GetSerializeSize(VARINT(Vcoinh*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
+               (Vcoinh > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
                ::GetSerializeSize(CTxOutCompressor(REF(txout)), nType, nVersion);
     }
 
     template<typename Stream>
     void Serialize(Stream &s, int nType, int nVersion) const {
-        ::Serialize(s, VARINT(VcoinHT*2+(fCoinBase ? 1 : 0)), nType, nVersion);
-        if (VcoinHT > 0)
+        ::Serialize(s, VARINT(Vcoinh*2+(fCoinBase ? 1 : 0)), nType, nVersion);
+        if (Vcoinh > 0)
             ::Serialize(s, VARINT(this->nVersion), nType, nVersion);
         ::Serialize(s, CTxOutCompressor(REF(txout)), nType, nVersion);
     }
@@ -793,9 +789,9 @@ public:
     void Unserialize(Stream &s, int nType, int nVersion) {
         unsigned int nCode = 0;
         ::Unserialize(s, VARINT(nCode), nType, nVersion);
-        VcoinHT = nCode / 2;
+        Vcoinh = nCode / 2;
         fCoinBase = nCode & 1;
-        if (VcoinHT > 0)
+        if (Vcoinh > 0)
             ::Unserialize(s, VARINT(this->nVersion), nType, nVersion);
         ::Unserialize(s, REF(CTxOutCompressor(REF(txout))), nType, nVersion);
     }
@@ -892,7 +888,7 @@ public:
  * - VARINT(nCode)
  * - unspentness bitvector, for vout[2] and further; least significant byte first
  * - the non-spent CTxOuts (via CTxOutCompressor)
- * - VARINT(VcoinHT)
+ * - VARINT(Vcoinh)
  *
  * The nCode value consists of:
  * - bit 1: IsCoinBase()
@@ -946,17 +942,17 @@ public:
     std::vector<CTxOut> vout;
 
     // at which height this transaction was included in the active block chain
-    int VcoinHT;
+    int Vcoinh;
 
-    // version of the CTransaction; accesses to this value should probably check for VcoinHT as well,
+    // version of the CTransaction; accesses to this value should probably check for Vcoinh as well,
     // as new tx version will probably only be introduced at certain heights
     int nVersion;
 
     // construct a CCoins from a CTransaction, at a given height
-    CCoins(const CTransaction &tx, int VcoinHTIn) : fCoinBase(tx.IsCoinBase()), vout(tx.vout), VcoinHT(VcoinHTIn), nVersion(tx.nVersion) { }
+    CCoins(const CTransaction &tx, int VcoinhIn) : fCoinBase(tx.IsCoinBase()), vout(tx.vout), Vcoinh(VcoinhIn), nVersion(tx.nVersion) { }
 
     // empty constructor
-    CCoins() : fCoinBase(false), vout(0), VcoinHT(0), nVersion(0) { }
+    CCoins() : fCoinBase(false), vout(0), Vcoinh(0), nVersion(0) { }
 
     // remove spent outputs at the end of vout
     void Cleanup() {
@@ -969,14 +965,14 @@ public:
     void swap(CCoins &to) {
         std::swap(to.fCoinBase, fCoinBase);
         to.vout.swap(vout);
-        std::swap(to.VcoinHT, VcoinHT);
+        std::swap(to.Vcoinh, Vcoinh);
         std::swap(to.nVersion, nVersion);
     }
 
     // equality test
     friend bool operator==(const CCoins &a, const CCoins &b) {
          return a.fCoinBase == b.fCoinBase &&
-                a.VcoinHT == b.VcoinHT &&
+                a.Vcoinh == b.Vcoinh &&
                 a.nVersion == b.nVersion &&
                 a.vout == b.vout;
     }
@@ -1028,7 +1024,7 @@ public:
             if (!vout[i].IsNull())
                 nSize += ::GetSerializeSize(CTxOutCompressor(REF(vout[i])), nType, nVersion);
         // height
-        nSize += ::GetSerializeSize(VARINT(VcoinHT), nType, nVersion);
+        nSize += ::GetSerializeSize(VARINT(Vcoinh), nType, nVersion);
         return nSize;
     }
 
@@ -1058,7 +1054,7 @@ public:
                 ::Serialize(s, CTxOutCompressor(REF(vout[i])), nType, nVersion);
         }
         // coinbase height
-        ::Serialize(s, VARINT(VcoinHT), nType, nVersion);
+        ::Serialize(s, VARINT(Vcoinh), nType, nVersion);
     }
 
     template<typename Stream>
@@ -1091,7 +1087,7 @@ public:
                 ::Unserialize(s, REF(CTxOutCompressor(vout[i])), nType, nVersion);
         }
         // coinbase height
-        ::Unserialize(s, VARINT(VcoinHT), nType, nVersion);
+        ::Unserialize(s, VARINT(Vcoinh), nType, nVersion);
         Cleanup();
     }
 
@@ -1105,7 +1101,7 @@ public:
         vout[out.n].SetNull();
         Cleanup();
         if (vout.size() == 0) {
-            undo.VcoinHT = VcoinHT;
+            undo.Vcoinh = Vcoinh;
             undo.fCoinBase = fCoinBase;
             undo.nVersion = this->nVersion;
         }
@@ -1684,8 +1680,8 @@ public:
     unsigned int nBlocks;      // number of blocks stored in file
     unsigned int nSize;        // number of used bytes of block file
     unsigned int nUndoSize;    // number of used bytes in the undo file
-    unsigned int VcoinHTFirst; // lowest height of block in file
-    unsigned int VcoinHTLast;  // highest height of block in file
+    unsigned int VcoinhFirst; // lowest height of block in file
+    unsigned int VcoinhLast;  // highest height of block in file
     uint64 nTimeFirst;         // earliest time of block in file
     uint64 nTimeLast;          // latest time of block in file
 
@@ -1693,8 +1689,8 @@ public:
         READWRITE(VARINT(nBlocks));
         READWRITE(VARINT(nSize));
         READWRITE(VARINT(nUndoSize));
-        READWRITE(VARINT(VcoinHTFirst));
-        READWRITE(VARINT(VcoinHTLast));
+        READWRITE(VARINT(VcoinhFirst));
+        READWRITE(VARINT(VcoinhLast));
         READWRITE(VARINT(nTimeFirst));
         READWRITE(VARINT(nTimeLast));
      )
@@ -1703,8 +1699,8 @@ public:
          nBlocks = 0;
          nSize = 0;
          nUndoSize = 0;
-         VcoinHTFirst = 0;
-         VcoinHTLast = 0;
+         VcoinhFirst = 0;
+         VcoinhLast = 0;
          nTimeFirst = 0;
          nTimeLast = 0;
      }
@@ -1714,18 +1710,18 @@ public:
      }
 
      std::string ToString() const {
-         return strprintf("CBlockFileInfo(blocks=%u, size=%u, heights=%u...%u, time=%s...%s)", nBlocks, nSize, VcoinHTFirst, VcoinHTLast, DateTimeStrFormat("%Y-%m-%d", nTimeFirst).c_str(), DateTimeStrFormat("%Y-%m-%d", nTimeLast).c_str());
+         return strprintf("CBlockFileInfo(blocks=%u, size=%u, heights=%u...%u, time=%s...%s)", nBlocks, nSize, VcoinhFirst, VcoinhLast, DateTimeStrFormat("%Y-%m-%d", nTimeFirst).c_str(), DateTimeStrFormat("%Y-%m-%d", nTimeLast).c_str());
      }
 
      // update statistics (does not update nSize)
-     void AddBlock(unsigned int VcoinHTIn, uint64 nTimeIn) {
-         if (nBlocks==0 || VcoinHTFirst > VcoinHTIn)
-             VcoinHTFirst = VcoinHTIn;
+     void AddBlock(unsigned int VcoinhIn, uint64 nTimeIn) {
+         if (nBlocks==0 || VcoinhFirst > VcoinhIn)
+             VcoinhFirst = VcoinhIn;
          if (nBlocks==0 || nTimeFirst > nTimeIn)
              nTimeFirst = nTimeIn;
          nBlocks++;
-         if (VcoinHTIn > VcoinHTFirst)
-             VcoinHTLast = VcoinHTIn;
+         if (VcoinhIn > VcoinhFirst)
+             VcoinhLast = VcoinhIn;
          if (nTimeIn > nTimeLast)
              nTimeLast = nTimeIn;
      }
@@ -1773,7 +1769,7 @@ public:
     CBlockIndex* pnext;
 
     // height of the entry in the chain. The genesis block has height 0
-    int VcoinHT;
+    int Vcoinh;
 
     // Which # file this block is stored in (blk?????.dat)
     int nFile;
@@ -1810,7 +1806,7 @@ public:
         phashBlock = NULL;
         pprev = NULL;
         pnext = NULL;
-        VcoinHT = 0;
+        Vcoinh = 0;
         nFile = 0;
         nDataPos = 0;
         nUndoPos = 0;
@@ -1831,7 +1827,7 @@ public:
         phashBlock = NULL;
         pprev = NULL;
         pnext = NULL;
-        VcoinHT = 0;
+        Vcoinh = 0;
         nFile = 0;
         nDataPos = 0;
         nUndoPos = 0;
@@ -1946,8 +1942,8 @@ public:
 
     std::string ToString() const
     {
-        return strprintf("CBlockIndex(pprev=%p, pnext=%p, VcoinHT=%d, merkle=%s, hashBlock=%s)",
-            pprev, pnext, VcoinHT,
+        return strprintf("CBlockIndex(pprev=%p, pnext=%p, Vcoinh=%d, merkle=%s, hashBlock=%s)",
+            pprev, pnext, Vcoinh,
             hashMerkleRoot.ToString().c_str(),
             GetBlockHash().ToString().c_str());
     }
@@ -1992,7 +1988,7 @@ public:
         if (!(nType & SER_GETHASH))
             READWRITE(VARINT(nVersion));
 
-        READWRITE(VARINT(VcoinHT));
+        READWRITE(VARINT(Vcoinh));
         READWRITE(VARINT(nStatus));
         READWRITE(VARINT(nTx));
         if (nStatus & (BLOCK_HAVE_DATA | BLOCK_HAVE_UNDO))
@@ -2221,7 +2217,7 @@ public:
         CBlockIndex* pindex = GetBlockIndex();
         if (!pindex)
             return 0;
-        return pindex->VcoinHT;
+        return pindex->Vcoinh;
     }
 };
 
@@ -2270,7 +2266,7 @@ extern CTxMemPool mempool;
 
 struct CCoinsStats
 {
-    int VcoinHT;
+    int Vcoinh;
     uint256 hashBlock;
     uint64 nTransactions;
     uint64 nTransactionOutputs;
@@ -2278,7 +2274,7 @@ struct CCoinsStats
     uint256 hashSerialized;
     int64 nTotalAmount;
 
-    CCoinsStats() : VcoinHT(0), hashBlock(0), nTransactions(0), nTransactionOutputs(0), nSerializedSize(0), hashSerialized(0), nTotalAmount(0) {}
+    CCoinsStats() : Vcoinh(0), hashBlock(0), nTransactions(0), nTransactionOutputs(0), nSerializedSize(0), hashSerialized(0), nTotalAmount(0) {}
 };
 
 /** Abstract view on the open txout dataset. */

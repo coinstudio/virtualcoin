@@ -122,7 +122,7 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, Object& entry)
             CBlockIndex* pindex = (*mi).second;
             if (pindex->IsInMainChain())
             {
-                entry.push_back(Pair("confirmations", 1 + nBestHeight - pindex->VcoinHT));
+                entry.push_back(Pair("confirmations", 1 + nBestHeight - pindex->Vcoinh));
                 entry.push_back(Pair("time", (boost::int64_t)pindex->nTime));
                 entry.push_back(Pair("blocktime", (boost::int64_t)pindex->nTime));
             }
@@ -561,7 +561,7 @@ Value sendrawtransaction(const Array& params, bool fHelp)
         }
     }
     if (fHave) {
-        if (existingCoins.VcoinHT < 1000000000)
+        if (existingCoins.Vcoinh < 1000000000)
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "transaction already in block chain");
         // Not in block, but already in the memory pool; will drop
         // through to re-relay it.
