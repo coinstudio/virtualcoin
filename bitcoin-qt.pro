@@ -1,11 +1,7 @@
 TEMPLATE = app
 TARGET = virtualcoin-qt
 macx:TARGET = "VirtualCoin-Qt"
-<<<<<<< HEAD
 VERSION = 0.14.0.1
-=======
-VERSION = 0.13.0.8
->>>>>>> origin/9.2.0
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
