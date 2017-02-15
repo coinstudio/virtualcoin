@@ -8,7 +8,7 @@
 // Name of client reported in the 'version' message. Report the same name
 // for both bitcoind and bitcoin-qt, to make it harder for attackers to
 // target servers or GUI users specifically.
-const std::string CLIENT_NAME("Vcoin2017");
+const std::string CLIENT_NAME("Vcoin2017u");
 
 // Client version number
 #define CLIENT_VERSION_SUFFIX   "-VirtualCoin.ca"
