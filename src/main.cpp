@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
+ 
 #include "alert.h"
 #include "checkpoints.h"
 #include "db.h"
@@ -1179,7 +1179,7 @@ int CMerkleTx::GetBlocksToMaturity() const
     if (!IsCoinBase())
         return 0;
 
-    return max(0, (COINBASE_MATURITY+20) - GetDepthInMainChain());
+    return max(0, (COINBASE_MATURITY+5) - GetDepthInMainChain());
 }
 
 
@@ -1379,10 +1379,15 @@ if(Vcoinh >= 6000)
  Vcoinr *= COIN;
 
     // yearly decline of production by 20% per year, projected 3M coins max by year 20XX.
-    for(int i = 7520; i <= Vcoinh; i += 7520) Vcoinr *= 0.90;
+for(int i = 7520; i <= Vcoinh; i += 7520) Vcoinr *= 0.90;
  
-
-    return Vcoinr + nFees;
+if((Vcoinh > 7500) || Vcoinh < 100000) { 
+		return Vcoinr;
+        }
+		else { 
+		return Vcoinr + nFees;
+		}
+     
 }
 
 static const int64 nTargetTimespan = 15 * 60 * 1;
@@ -1693,9 +1698,9 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
             if (pindexLast->Vcoinh+1 >= 16) { DiffMode = 4; }
         }
         else {
-            if (pindexLast->Vcoinh+1 >= 400) { DiffMode = 4; }
-            else if (pindexLast->Vcoinh+1 >= 300) { DiffMode = 3; }
-            else if (pindexLast->Vcoinh+1 >= 200) { DiffMode = 2; }
+            if (pindexLast->Vcoinh+1 >= 10000) { DiffMode = 4; }
+            else if (pindexLast->Vcoinh+1 >= 100) { DiffMode = 3; }
+//            else if (pindexLast->Vcoinh+1 >= 72800) { DiffMode = 2; }
         }
 
         if (DiffMode == 1) { return GetNextWorkRequired_V1(pindexLast, pblock); }
@@ -2466,7 +2471,7 @@ bool SetBestChain(CValidationState &state, CBlockIndex* pindexNew)
             printf("SetBestChain: %d of last 100 blocks above version %d\n", nUpgraded, CBlock::CURRENT_VERSION);
         if (nUpgraded > 100/2)
             // strMiscWarning is read by GetWarnings(), called by Qt and the JSON-RPC code to warn the user:
-            strMiscWarning = _("Warning: This version is no longer supported, upgrade to new version from vcoin.ca");
+            strMiscWarning = _("Warning: This version is no longer supported, upgrade to new version from virtualcoin.ca");
     }
 
     std::string strCmd = GetArg("-blocknotify", "");
@@ -2865,7 +2870,7 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
                 return state.DoS(100, error("AcceptBlock() : incorrect proof of work"));
         } else {
             // Check proof of work (Here for the architecture issues with DGW v1 and v2)
-            if(Vcoinh <= 400){
+            if(Vcoinh <= 10000){
                 unsigned int nBitsNext = GetNextWorkRequired(pindexPrev, this);
                 double n1 = ConvertBitsToDouble(nBits);
                 double n2 = ConvertBitsToDouble(nBitsNext);
@@ -2879,7 +2884,7 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
         }
 
         // Prevent blocks from too far in the future
-        if(fTestNet || Vcoinh >= 45000){
+        if(fTestNet || Vcoinh >= 10000){
             if (GetBlockTime() > GetAdjustedTime() + 15 * 60) {
                 return error("AcceptBlock() : block's timestamp too far in the future");
             }
@@ -3454,7 +3459,11 @@ bool LoadBlockIndex()
 {
     if (fTestNet)
     {
-        hashGenesisBlock = uint256("0x00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c");
+//        pchMessageStart[0] = 0xfc;
+//        pchMessageStart[1] = 0xc1;
+//        pchMessageStart[2] = 0xb7;
+//        pchMessageStart[3] = 0xdc;
+        hashGenesisBlock = uint256("0x1111111111111111111111111111111111111111111111111111111111111111");
     }
 
     //
@@ -3515,12 +3524,19 @@ bool InitBlockIndex() {
         }
 
 		
-        //// debug print
+        ///// debug print
         uint256 hash = block.GetHash();
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+        if (fTestNet)
+        {
+            assert(block.hashMerkleRoot == uint256("0x4fec71c084e84581a303133f5a461a852aa121b713025d25daa733dd3d66db19"));
+        }
+        else
+        {
             assert(block.hashMerkleRoot == uint256("0x4fec71c084e84581a303133f5a461a852aa021b713025d25daa733dd3d66db19"));
+        }
  
        block.print();
        assert(hash == hashGenesisBlock);
@@ -3724,7 +3740,7 @@ string GetWarnings(string strFor)
         strRPC = "test";
 
     if (!CLIENT_VERSION_IS_RELEASE)
-        strStatusBar = _("This is a pre-release test build - use at your own risk - do not use for mining or merchant applications");
+        strStatusBar = _("This is a build that can be used for mining or merchant applications");
 
     // Checkpoint warning
     if (strCheckpointWarning != "")
@@ -4185,10 +4201,10 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
         if((fTestNet && addr.GetPort() != 19999) || (!fTestNet && addr.GetPort() != 9999)) return true;
 
-        //printf("Searching existing masternodes : %s - %s\n", addr.ToString().c_str(),  vin.ToString().c_str());
+        printf("Searching existing supernodes : %s - %s\n", addr.ToString().c_str(),  vin.ToString().c_str());
         
         BOOST_FOREACH(CMasterNode& mn, virtualSendMasterNodes) {
-            //printf(" -- %s\n", mn.vin.ToString().c_str());
+            printf(" -- %s\n", mn.vin.ToString().c_str());
 
             if(mn.vin == vin) {
                 if(!mn.UpdatedWithin(MASTERNODE_MIN_MICROSECONDS)){

@@ -76,7 +76,7 @@ static const int64 DUST_SOFT_LIMIT = 100000; // 0.001 VC
 /** Dust Hard Limit, ignored as wallet inputs (mininput default) */
 static const int64 DUST_HARD_LIMIT = 1000;   // 0.00001 VC mininput
 /** No amount larger than this (in satoshi) is valid */
-static const int64 MAX_MONEY = 400000000 * COIN;
+static const int64 MAX_MONEY = 4000000000 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 static const int COINBASE_MATURITY = 2000;
@@ -2508,9 +2508,9 @@ public:
 
         std::string strAddress = "";  
         if(!fTestNet) {
-            strAddress = "Xq19GqFvajRrEdDHYRKGYjTsQfpV5jyipF";
+            strAddress = "VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x";
         } else {
-            strAddress = "mxE2Rp3oYpSEFdsN5TdHWhZvEHm3PJQQVm";
+            strAddress = "VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x";
         }
         
         SetCollateralAddress(strAddress);
