@@ -1407,8 +1407,8 @@ Adres: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Ödemenin gönderileceği adres (mesela Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to send the payment to (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Ödemenin gönderileceği adres (mesela VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1448,8 +1448,8 @@ Adres: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>VirtualCoin adresi giriniz (mesela Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>VirtualCoin adresi giriniz (mesela VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
 </context>
 <context>
@@ -1471,8 +1471,8 @@ Adres: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Mesajın imzalanmasında kullanılacak adres (mesela Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to sign the message with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Mesajın imzalanmasında kullanılacak adres (mesela VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1544,8 +1544,8 @@ Adres: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Mesajı imzalamak için kullanılmış olan adres (mesela Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address the message was signed with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Mesajı imzalamak için kullanılmış olan adres (mesela VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1565,8 +1565,8 @@ Adres: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>VirtualCoin adresi giriniz (mesela Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>VirtualCoin adresi giriniz (mesela VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1783,7 +1783,7 @@ Adres: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature 2000 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>Oluşturulan VirtualCoin&apos;lerin harcanabilmelerinden önce 120 blok beklemeleri gerekmektedir. Bu blok, oluşturduğunuzda blok zincirine eklenmesi için ağda yayınlandı. Zincire eklenmesi başarısız olursa, durumu &quot;kabul edilmedi&quot; olarak değiştirilecek ve harcanamayacaktır. Bu, bazen başka bir düğüm sizden birkaç saniye önce ya da sonra blok oluşturursa meydana gelebilir.</translation>
     </message>
     <message>

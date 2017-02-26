@@ -1407,8 +1407,8 @@ Endereço: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>O endereço para onde enviar o pagamento  (p.ex. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to send the payment to (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>O endereço para onde enviar o pagamento  (p.ex. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1448,8 +1448,8 @@ Endereço: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introduza um endereço VirtualCoin (p.ex. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Introduza um endereço VirtualCoin (p.ex. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
 </context>
 <context>
@@ -1471,8 +1471,8 @@ Endereço: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>O endereço a utilizar para assinar a mensagem (p.ex. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to sign the message with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>O endereço a utilizar para assinar a mensagem (p.ex. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1544,8 +1544,8 @@ Endereço: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>O endereço utilizado para assinar a mensagem (p.ex. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address the message was signed with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>O endereço utilizado para assinar a mensagem (p.ex. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1565,8 +1565,8 @@ Endereço: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introduza um endereço VirtualCoin (p.ex. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Introduza um endereço VirtualCoin (p.ex. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1783,7 +1783,7 @@ Endereço: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature 2000 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>Moedas geradas deverão maturar por 120 blocos antes de poderem ser gastas. Quando gerou este bloco, ele foi transmitido para a rede para ser incluído na cadeia de blocos. Se a inclusão na cadeia de blocos falhar, irá mudar o estado para &quot;não aceite&quot; e as moedas não poderão ser gastas.  Isto poderá acontecer ocasionalmente se outro nó da rede gerar um bloco a poucos segundos de diferença do seu.</translation>
     </message>
     <message>

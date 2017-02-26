@@ -1407,7 +1407,7 @@ Cím: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <source>The address to send the payment to (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1449,8 +1449,8 @@ Cím: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Adj meg egy VirtualCoin-címet (pl.: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2 )</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Adj meg egy VirtualCoin-címet (pl.: VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x )</translation>
     </message>
 </context>
 <context>
@@ -1472,8 +1472,8 @@ Cím: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Adj meg egy VirtualCoin-címet (pl.: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2 )</translation>
+        <source>The address to sign the message with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Adj meg egy VirtualCoin-címet (pl.: VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x )</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1545,8 +1545,8 @@ Cím: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Adj meg egy VirtualCoin-címet (pl.: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2 )</translation>
+        <source>The address the message was signed with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Adj meg egy VirtualCoin-címet (pl.: VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x )</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1566,8 +1566,8 @@ Cím: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Adj meg egy VirtualCoin-címet (pl.: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2 )</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Adj meg egy VirtualCoin-címet (pl.: VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x )</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1784,7 +1784,7 @@ Cím: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature 2000 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>A frissen generált érméket csak 120 blokkal később tudod elkölteni.  Ez a blokk nyomban szétküldésre került a hálózatba, amint legeneráltad, hogy hozzáadhassák a blokklánchoz.  Ha nem kerül be a láncba, úgy az állapota &quot;elutasítva&quot;-ra módosul,  és nem költheted el az érméket. Ez akkor következhet be időnként, ha egy másik csomópont mindössze néhány másodperc különbséggel generált le egy blokkot a tiédhez képest.</translation>
     </message>
     <message>

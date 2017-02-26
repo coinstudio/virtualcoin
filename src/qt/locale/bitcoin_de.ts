@@ -1406,8 +1406,8 @@ Adresse: %4</translation>
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Die Zahlungsadresse der Überweisung (z.B. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to send the payment to (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Die Zahlungsadresse der Überweisung (z.B. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1447,8 +1447,8 @@ Adresse: %4</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>VirtualCoin-Adresse eingeben (z.B. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>VirtualCoin-Adresse eingeben (z.B. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
 </context>
 <context>
@@ -1470,8 +1470,8 @@ Adresse: %4</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Die Adresse mit der die Nachricht signiert wird (z.B. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to sign the message with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Die Adresse mit der die Nachricht signiert wird (z.B. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1543,8 +1543,8 @@ Adresse: %4</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Die Adresse mit der die Nachricht signiert wurde (z.B. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address the message was signed with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>Die Adresse mit der die Nachricht signiert wurde (z.B. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1564,8 +1564,8 @@ Adresse: %4</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>VirtualCoin-Adresse eingeben (z.B. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>VirtualCoin-Adresse eingeben (z.B. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1782,7 +1782,7 @@ Adresse: %4</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature 2000 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>Generierte VirtualCoins müssen 120 Blöcke lang reifen, bevor sie ausgegeben werden können. Als Sie diesen Block generierten, wurde er an das Netzwerk übertragen, um ihn der Blockkette hinzuzufügen. Falls dies fehlschlägt wird der Status in &quot;nicht angenommen&quot; geändert und der Betrag wird nicht verfügbar werden. Das kann gelegentlich passieren, wenn ein anderer Knoten einen Block fast zeitgleich generiert.</translation>
     </message>
     <message>

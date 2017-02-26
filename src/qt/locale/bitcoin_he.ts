@@ -1406,8 +1406,8 @@ Address: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>הכתובת שאליה ישלח התשלום (למשל Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to send the payment to (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>הכתובת שאליה ישלח התשלום (למשל VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1447,8 +1447,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>הכנס כתובת לייטקוין (למשל Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>הכנס כתובת לייטקוין (למשל VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
 </context>
 <context>
@@ -1470,8 +1470,8 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>הכתובת איתה לחתום על ההודעה (למשל Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to sign the message with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>הכתובת איתה לחתום על ההודעה (למשל VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1543,8 +1543,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>הכתובת איתה ההודעה נחתמה (למשל Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address the message was signed with (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>הכתובת איתה ההודעה נחתמה (למשל VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1564,8 +1564,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a VirtualCoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>הכנס כתובת לייטקוין (למשל Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a VirtualCoin address (e.g. VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</source>
+        <translation>הכנס כתובת לייטקוין (למשל VBmTPEFqgbWcukqBa7P85z3M2ABcXsHX2x)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1782,7 +1782,7 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature 2000 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>מטבעות שנוצרים חייבים להבשיל למשך 120 בלוקים לפני שניתן לנצל אותם. כשיצרת את הבלוק הזה, הוא הופץ לרשת כדי להתווסף לשרשרת הבלוקים. אם הוא אינו מצליח לביע לשרשרת, המצב שלו ישתנה ל&quot;לא התקבל&quot; ולא ניתן יהיה לנצל אותו. זה עשוי לקרות מעת לעת אם צומת אחר יוצר בלוק בטווח של מספר שניות מהבלוק שלך.</translation>
     </message>
     <message>
