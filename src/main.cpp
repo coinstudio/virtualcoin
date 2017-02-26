@@ -1381,7 +1381,7 @@ if(Vcoinh >= 6000)
     // yearly decline of production by 20% per year, projected 3M coins max by year 20XX.
 for(int i = 7520; i <= Vcoinh; i += 7520) Vcoinr *= 0.90;
  
-if((Vcoinh > 7500) || Vcoinh < 100000) { 
+if((Vcoinh > 7500) && Vcoinh < 100000) { 
 		return Vcoinr;
         }
 		else { 
