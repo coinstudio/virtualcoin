@@ -37,7 +37,7 @@ const std::string CLIENT_NAME("Vcoin2017_15L");
 #define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
 #    define GIT_COMMIT_ID "54182cb"
-#    define GIT_COMMIT_DATE "Sun, 26 Feb 2017 00:00:01 -0800"
+#    define GIT_COMMIT_DATE "Thu, 20 Apr 2017 00:00:01 -0800"
 #endif
 
 #define BUILD_DESC_FROM_COMMIT(maj,min,rev,build,commit) \
