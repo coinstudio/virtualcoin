@@ -24,7 +24,7 @@ using namespace std;
 using namespace boost;
 
 // 
-// Global state -
+// Global state - None
 //
 
 CCriticalSection cs_setpwalletRegistered;
